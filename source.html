@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #fafafa;
+        color: #333;
+        text-align: center;
+      }
+      h1 {
+        color: #388e3c;
+        font-size: 2.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-container {
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+      }
+      .form-container:hover {
+        transform: scale(1.02);
+      }
+      label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #388e3c;
+        margin-bottom: 10px;
+        display: block;
+      }
+      input[type="number"] {
+        width: 80%;
+        padding: 12px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border: 2px solid #388e3c;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        color: #333;
+        text-align: right;
+      }
+      input[type="number"]:focus {
+        outline: none;
+        border-color: #4caf50;
+        box-shadow: 0 0 5px rgba(0, 128, 0, 0.3);
+      }
+      button {
+        width: 100%;
+        padding: 15px;
+        background-color: #4caf50;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #388e3c;
+      }
+      .resultado {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #388e3c;
+        text-align: center;
+      }
+      .resultado p {
+        margin: 5px 0;
+      }
+      .deudas-container {
+        margin-top: 30px;
+        padding-bottom: 20px;
+      }
+      .deuda-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background-color: #c8e6c9;
+        padding: 12px;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      }
+      .deuda-item input {
+        width: 75%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #388e3c;
+        border-radius: 8px;
+        background-color: #ffffff;
+      }
+      .deuda-item button {
+        background-color: #f44336;
+        color: white;
+        font-size: 16px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 20%;
+      }
+      .deuda-item button:hover {
+        background-color: #d32f2f;
+      }
+      .clear-btn {
+        background-color: #ffeb3b;
+        color: #388e3c;
+        padding: 15px;
+        font-size: 18px;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .clear-btn:hover {
+        background-color: #fbc02d;
+      }
+      .form-footer {
+        font-size: 14px;
+        color: #388e3c;
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  <style type="text/css">
+.grande { font-size: 60px; }
+</style>
+<script>
+// Escribir aqui el código Javascript
+</script>
+</head>
+  <body>
+    <div class="form-container">
+      <h1>Cuadrar Caja</h1>
+      <form id="formulario">
+        <h3>Billetes</h3>
+        <label for="billetes50">Billetes de 50€:</label>
+        <input type="number" id="billetes50" name="billetes50" step="any" placeholder="Ej: 50" onkeydown="avanzarFoco(event, 'billetes20')"><br>
+        <label for="billetes20">Billetes de 20€:</label>
+        <input type="number" id="billetes20" name="billetes20" step="any" placeholder="Ej: 20" onkeydown="avanzarFoco(event, 'billetes10')"><br>
+        <label for="billetes10">Billetes de 10€:</label>
+        <input type="number" id="billetes10" name="billetes10" step="any" placeholder="Ej: 10" onkeydown="avanzarFoco(event, 'billetes5')"><br>
+        <label for="billetes5">Billetes de 5€:</label>
+        <input type="number" id="billetes5" name="billetes5" step="any" placeholder="Ej: 5" onkeydown="avanzarFoco(event, 'monedas2')"><br>
+
+        <h3>Monedas</h3>
+        <label for="monedas2">Monedas de 2€:</label>
+        <input type="number" id="monedas2" name="monedas2" step="any" placeholder="Ej: 2" onkeydown="avanzarFoco(event, 'monedas1')"><br>
+        <label for="monedas1">Monedas de 1€:</label>
+        <input type="number" id="monedas1" name="monedas1" step="any" placeholder="Ej: 1" onkeydown="avanzarFoco(event, 'monedas050')"><br>
+        <label for="monedas050">Monedas de 0.50€:</label>
+        <input type="number" id="monedas050" name="monedas050" step="any" placeholder="Ej: 0.50" onkeydown="avanzarFoco(event, 'monedas020')"><br>
+        <label for="monedas020">Monedas de 0.20€:</label>
+        <input type="number" id="monedas020" name="monedas020" step="any" placeholder="Ej: 0.20" onkeydown="avanzarFoco(event, 'monedas010')"><br>
+        <label for="monedas010">Monedas de 0.10€:</label>
+        <input type="number" id="monedas010" name="monedas010" step="any" placeholder="Ej: 0.10" onkeydown="avanzarFoco(event, 'monedas005')"><br>
+        <label for="monedas005">Monedas de 0.05€:</label>
+        <input type="number" id="monedas005" name="monedas005" step="any" placeholder="Ej: 0.05" onkeydown="avanzarFoco(event, 'monedas002')"><br>
+        <label for="monedas002">Monedas de 0.02€:</label>
+        <input type="number" id="monedas002" name="monedas002" step="any" placeholder="Ej: 0.02" onkeydown="avanzarFoco(event, 'monedas001')"><br>
+        <label for="monedas001">Monedas de 0.01€:</label>
+        <input type="number" id="monedas001" name="monedas001" step="any" placeholder="Ej: 0.01" onkeydown="avanzarFoco(event, 'deudasInput')"><br>
+
+        <!-- Deudas -->
+        <div class="deudas-container">
+          <h3>Agregar Deudas</h3>
+          <input type="number" id="deudasInput" placeholder="Monto de deuda" step="any" onkeydown="agregarDeudaEnter(event)"><br>
+          <button type="button" onclick="agregarDeuda()">Agregar Deuda</button><br>
+        </div>
+
+        <label for="totalEsperado">Programa :</label>
+        <input type="number" id="totalEsperado" name="totalEsperado" placeholder="Ej: 200" step="any" onkeydown="comprobarEnter(event)"><br>
+
+
+        <button type="button" onclick="calcular()">Calcular</button>
+        <div class="resultado" id="resultado"></div>
+        <button type="button" class="clear-btn" onclick="limpiarFormulario()">Limpiar Formulario</button>
+        <button type="button" onclick="verUltimoResultado()"> Ultimo calculo </button>
+        <button type="button" onclick="cargarUltimoResultado()">Cargar Último Resultado</button>
+
+      </form>
+    </div>
+
+    <script>
+      // Función para avanzar el foco al siguiente campo al presionar Enter
+      function avanzarFoco(event, siguienteId) {
+        if (event.key === 'Enter') {
+          event.preventDefault(); // Prevenir acción por defecto del Enter (como hacer submit)
+          document.getElementById(siguienteId).focus();
+        }
+      }
+
+      // Función para agregar deuda cuando se presiona Enter
+      function agregarDeudaEnter(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault(); // Prevenir acción por defecto del Enter (como hacer submit)
+          agregarDeuda();
+        }
+      }
+
+      // Función para agregar deuda con el botón
+      function agregarDeuda() {
+        const deudaInput = document.getElementById('deudasInput');
+        const deudaValue = parseFloat(deudaInput.value);
+
+        if (!isNaN(deudaValue) && deudaValue > 0) {
+          let deudaItem = document.createElement('div');
+          deudaItem.classList.add('deuda-item');
+          deudaItem.innerHTML = `
+            <input type="text" value="${deudaValue.toFixed(2)} €" onclick="editarDeuda(this)" readonly>
+            <button type="button" onclick="eliminarDeuda(this)">Eliminar</button>
+          `;
+          document.querySelector('.deudas-container').appendChild(deudaItem);
+          deudaInput.value = ''; // Limpiar el campo de deuda
+        }
+      }
+
+      // Editar deuda al hacer clic en ella
+      function editarDeuda(input) {
+        input.removeAttribute('readonly'); // Permitir la edición
+        input.focus(); // Focar el campo para que el usuario pueda editarlo
+      }
+
+      // Eliminar una deuda
+      function eliminarDeuda(button) {
+        button.parentElement.remove();
+      }
+
+      // Función para comprobar si se presionó la tecla Enter en el campo "totalEsperado"
+function comprobarEnter(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();  // Prevenir el comportamiento por defecto del Enter
+    calcular();  // Llamar a la función calcular
+  }
+}
+
+
+// Función para calcular el descuadre y mostrar el resultado
+  function calcular() {
+    const billetes50 = parseFloat(document.getElementById('billetes50').value) || 0;
+    const billetes20 = parseFloat(document.getElementById('billetes20').value) || 0;
+    const billetes10 = parseFloat(document.getElementById('billetes10').value) || 0;
+    const billetes5 = parseFloat(document.getElementById('billetes5').value) || 0;
+    const monedas2 = parseFloat(document.getElementById('monedas2').value) || 0;
+    const monedas1 = parseFloat(document.getElementById('monedas1').value) || 0;
+    const monedas050 = parseFloat(document.getElementById('monedas050').value) || 0;
+    const monedas020 = parseFloat(document.getElementById('monedas020').value) || 0;
+    const monedas010 = parseFloat(document.getElementById('monedas010').value) || 0;
+    const monedas005 = parseFloat(document.getElementById('monedas005').value) || 0;
+    const monedas002 = parseFloat(document.getElementById('monedas002').value) || 0;
+    const monedas001 = parseFloat(document.getElementById('monedas001').value) || 0;
+
+    const totalBilletes = billetes50  + billetes20 + billetes10 + billetes5;
+    const totalMonedas = monedas2 + monedas1 + monedas050  + monedas020 + monedas010 + monedas005 + monedas002  + monedas001;
+    const totalEfectivo = totalBilletes + totalMonedas;
+
+    const deudas = document.querySelectorAll('.deuda-item input');
+    let totalDeudas = 0;
+    let deudasArray = [];
+    deudas.forEach(deuda => {
+      const deudaValue = parseFloat(deuda.value.replace('€', '')) || 0;
+      totalDeudas += deudaValue;
+      deudasArray.push(deudaValue);  // Guardar las deudas individualmente
+    });
+
+    const totalEsperado = parseFloat(document.getElementById('totalEsperado').value) || 0;
+    const totalCaja = totalEfectivo + totalDeudas;
+
+    let descuadreMensaje = '';
+    if (totalCaja > totalEsperado) {
+      descuadreMensaje = `Sobran ${(totalCaja - totalEsperado).toFixed(2)} €`;
+    } else if (totalCaja < totalEsperado) {
+      descuadreMensaje = `Faltan ${(totalEsperado - totalCaja).toFixed(2)} €`;
+    } else {
+      descuadreMensaje = 'No hay descuadre';
+    }
+
+    // Guardar todos los datos en el localStorage
+    const ultimoResultado = {
+      billetes50,
+      billetes20,
+      billetes10,
+      billetes5,
+      monedas2,
+      monedas1,
+      monedas050,
+      monedas020,
+      monedas010,
+      monedas005,
+      monedas002,
+      monedas001,
+      deudas: deudasArray,  // Guardamos las deudas individualmente
+      totalEsperado,
+      totalBilletes,
+      totalMonedas,
+      totalEfectivo,
+      totalDeudas,
+      totalCaja,
+      descuadreMensaje
+    };
+    localStorage.setItem('ultimoResultado', JSON.stringify(ultimoResultado));
+
+    // Mostrar el resultado en la página
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.innerHTML = `
+      <p>Total Billetes: ${totalBilletes.toFixed(2)} €</p>
+      <p>Total Monedas: ${totalMonedas.toFixed(2)} €</p>
+      <p>Total Efectivo: ${totalEfectivo.toFixed(2)} €</p>
+      <p>Total Deudas: ${totalDeudas.toFixed(2)} €</p>
+      <p>Total Caja: ${totalCaja.toFixed(2)} €</p>
+      <p>Programa: ${totalEsperado.toFixed(2)} €</p>
+      <p>Descuadre: ${descuadreMensaje}</p>
+    `;
+  }
+
+  // Función para guardar las deudas en el localStorage
+  function guardarDeudasEnLocalStorage() {
+    const deudas = document.querySelectorAll('.deuda-item input');
+    let deudasArray = [];
+    deudas.forEach(deuda => {
+      const deudaValue = parseFloat(deuda.value.replace('€', '')) || 0;
+      deudasArray.push(deudaValue);
+    });
+    localStorage.setItem('deudas', JSON.stringify(deudasArray));  // Guardar deudas individualmente
+  }
+
+  // Mostrar el último resultado en una alerta
+  function verUltimoResultado() {
+    const ultimoResultado = JSON.parse(localStorage.getItem('ultimoResultado'));
+    if (ultimoResultado) {
+      // Crear una cadena para las deudas individuales
+      let deudasDetalles = '';
+      ultimoResultado.deudas.forEach((deuda, index) => {
+        deudasDetalles += `Deuda ${index + 1}: €${deuda.toFixed(2)}\n`;
+      });
+
+      alert(`
+        Último resultado calculado:
+
+        Billetes de 50€: ${ultimoResultado.billetes50.toFixed(2)} €
+        Billetes de 20€: ${ultimoResultado.billetes20.toFixed(2)} €
+        Billetes de 10€: ${ultimoResultado.billetes10.toFixed(2)} €
+        Billetes de  5€: ${ultimoResultado.billetes5.toFixed(2)} €
+
+ Total Billetes: ${ultimoResultado.totalBilletes} €
+
+        Monedas de 2€: ${ultimoResultado.monedas2.toFixed(2)} €
+        Monedas de 1€: ${ultimoResultado.monedas1.toFixed(2)} €
+        Monedas de 0.50€: ${ultimoResultado.monedas050.toFixed(2)} €
+        Monedas de 0.20€: ${ultimoResultado.monedas020.toFixed(2)} €
+        Monedas de 0.10€: ${ultimoResultado.monedas010.toFixed(2)} €
+        Monedas de 0.05€: ${ultimoResultado.monedas005.toFixed(2)} €
+        Monedas de 0.02€: ${ultimoResultado.monedas002.toFixed(2)} €
+        Monedas de 0.01€: ${ultimoResultado.monedas001.toFixed(2)} €
+
+Total Monedas: ${ultimoResultado.totalMonedas} €
+
+                  Total Efectivo: ${ultimoResultado.totalEfectivo} € 
+ Deudas:
+${deudasDetalles}  
+                  Total deudas: ${ultimoResultado.totalDeudas.toFixed(2 )} €
+
+                  Total Caja: ${ultimoResultado.totalCaja.toFixed(2)} €
+ 
+                  Programa : ${ultimoResultado.totalEsperado.toFixed(2)} €
+
+                 Descuadre: ${ultimoResultado.descuadreMensaje} 
+      `);
+    } else {
+      alert('No hay resultados calculados aún.');
+    }
+  }
+
+
+function cargarUltimoResultado() {
+  const ultimoResultado = JSON.parse(localStorage.getItem('ultimoResultado'));
+  if (ultimoResultado) {
+    // Rellenar los campos con los valores guardados en el localStorage para billetes y monedas
+    if (ultimoResultado.billetes50 !== 0) document.getElementById('billetes50').value = ultimoResultado.billetes50.toFixed(2);
+    if (ultimoResultado.billetes20 !== 0) document.getElementById('billetes20').value = ultimoResultado.billetes20.toFixed(2);
+    if (ultimoResultado.billetes10 !== 0) document.getElementById('billetes10').value = ultimoResultado.billetes10.toFixed(2);
+    if (ultimoResultado.billetes5 !== 0) document.getElementById('billetes5').value = ultimoResultado.billetes5.toFixed(2);
+    if (ultimoResultado.monedas2 !== 0) document.getElementById('monedas2').value = ultimoResultado.monedas2.toFixed(2);
+    if (ultimoResultado.monedas1 !== 0) document.getElementById('monedas1').value = ultimoResultado.monedas1.toFixed(2);
+    if (ultimoResultado.monedas050 !== 0) document.getElementById('monedas050').value = ultimoResultado.monedas050.toFixed(2);
+    if (ultimoResultado.monedas020 !== 0) document.getElementById('monedas020').value = ultimoResultado.monedas020.toFixed(2);
+    if (ultimoResultado.monedas010 !== 0) document.getElementById('monedas010').value = ultimoResultado.monedas010.toFixed(2);
+    if (ultimoResultado.monedas005 !== 0) document.getElementById('monedas005').value = ultimoResultado.monedas005.toFixed(2);
+    if (ultimoResultado.monedas002 !== 0) document.getElementById('monedas002').value = ultimoResultado.monedas002.toFixed(2);
+    if (ultimoResultado.monedas001 !== 0) document.getElementById('monedas001').value = ultimoResultado.monedas001.toFixed(2);
+    
+    // Cargar las deudas guardadas en el localStorage, pero mantener disponible el campo para agregar nuevas deudas
+    const deudasContainer = document.querySelector('.deudas-container');
+    
+    // Mantener el formulario de entrada para agregar nueva deuda
+    deudasContainer.innerHTML = `
+      <h3>Agregar Deudas</h3>
+      <input type="number" id="deudasInput" placeholder="Monto de deuda" step="any" onkeydown="agregarDeudaEnter(event)">
+      <button type="button" onclick="agregarDeuda()">Agregar Deuda</button><br>
+    `;
+    
+    // Agregar las deudas previamente guardadas
+    ultimoResultado.deudas.forEach(deuda => {
+      let deudaItem = document.createElement('div');
+      deudaItem.classList.add('deuda-item');
+      deudaItem.innerHTML = `
+        <input type="text" value="${deuda.toFixed(2)} €" onclick="editarDeuda(this)" readonly>
+        <button type="button" onclick="eliminarDeuda(this)">Eliminar</button>
+      `;
+      deudasContainer.appendChild(deudaItem);
+    });
+    
+  } else {
+    alert('No hay resultados guardados aún.');
+  }
+}
+
+
+  // Limpiar formulario y deudas
+  function limpiarFormulario() {
+    document.getElementById('formulario').reset();
+    document.getElementById('resultado').innerHTML = '';
+    document.querySelectorAll('.deuda-item').forEach(item => item.remove());
+    localStorage.removeItem('deudas');  // Limpiar deudas guardadas
+    // No limpiar el localStorage para mantener el último resultado guardado
+  }
+    </script>
+  
+
+
+</body></html>
